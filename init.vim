@@ -53,18 +53,16 @@ set timeout timeoutlen=1500
 
 " Plug stuff
 call plug#begin()
-"Plug 'honza/vim-snippets'
-"Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-rails'
 Plug 'myusuf3/numbers.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'joshdick/onedark.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
