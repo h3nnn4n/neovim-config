@@ -53,10 +53,26 @@ set timeout timeoutlen=1500
 
 " Plug stuff
 call plug#begin()
+Plug 'ryanoasis/vim-devicons'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'cespare/vim-toml'
+Plug 'tikhomirov/vim-glsl'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'fszymanski/deoplete-emoji'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'racer-rust/vim-racer'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/denite.nvim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
+
+Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-rails'
 Plug 'myusuf3/numbers.vim'
@@ -64,8 +80,6 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
@@ -83,6 +97,12 @@ call plug#end()
 " Editor settings
 let g:loaded_python_provider = 0
 let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
+
+
+" Gir blame settings
+nnoremap <silent> <leader>gb :ToggleBlameLine<CR>
+let g:blameLineVirtualTextPrefix = ' // '
+autocmd BufEnter * EnableBlameLine
 
 
 " Theme settings
