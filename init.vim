@@ -72,6 +72,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
 
+Plug 'vim-scripts/django.vim'
+
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'stephpy/vim-yaml'
+
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-rails'
@@ -85,9 +93,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-Plug 'bling/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'w0rp/ale'
@@ -127,14 +135,32 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 
-" FZF STUFF
-set rtp+=/usr/local/opt/fzf " for osx, with homebrew
-set rtp+=~/.fzf  " For linux, with git
+"" FZF STUFF
+" Not sure if the manual path update is required with vim-plug
+"set rtp+=/usr/local/opt/fzf " for osx, with homebrew
+"set rtp+=~/.fzf  " For linux, with git
+"let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.7 } }
+let g:fzf_layout = {}
 
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
-nmap <Leader>l :BLines<CR>
-nmap <Leader>L :Lines<CR>
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
+
+"nmap <Leader>f :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+"nmap <Leader>F :call fzf#run({'sink': 'e'})<CR>
+
+"nmap <Leader>f :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})<CR>
+"nmap <Leader>F :call fzf#run({'sink': 'e', 'down': '40%'})<CR>
+"nmap <Leader>l :BLines<CR>
+"nmap <Leader>L :Lines<CR>
+
+" fzf.vim is hanging
+ nmap <Leader>f :GFiles<CR>
+ nmap <Leader>F :Files<CR>
+ nmap <Leader>l :BLines<CR>
+ nmap <Leader>L :Lines<CR>
 
 nmap <Leader>/ :Rg<Space>
 
