@@ -40,6 +40,7 @@ set listchars+=precedes:<         " The character to show in the last column whe
 
 set wildmenu
 
+set colorcolumn=80,120
 
 if !has('nvim')
   set mouse=a
